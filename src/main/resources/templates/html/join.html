@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+
+<body>
+<h3>회원가입</h3>
+<input type ="text" id="uiId" placeholder="ID"><br>
+<input type ="password" id="uiPwd" placeholder="Password"><br>
+<input type ="text" id="uiName" placeholder="Name"><br>
+<input type ="text" id="uiMobile" placeholder="Mobile Phone Number"><br>
+<input type ="text" id="uiEmail" placeholder="Email"><br>
+<input type ="text" id="uiBirth" placeholder="BirthDay"><br>
+<button onclick="join()">회원 가입</button>
+<script>
+	 async function join(){
+            const data ={
+				uiId:document.querySelector("#uiId").value,
+				uiPwd:document.querySelector("#uiPwd").value,
+				uiName:document.querySelector("#uiName").value,
+				uiMobile:document.querySelector("#uiMobile").value,
+				uiEmail:document.querySelector("#uiEmail").value,
+				uiBirth:document.querySelector("#uiBirth").value
+			}
+            const res = await fetch('/join',{
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers:{ 
+                    'Content-Type':'application/json;charset=UTF-8'
+                }
+            })
+  
+        }
+</script>
+</body>
+</html>
